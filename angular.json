@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gestor-sinistro-app"
+    }
+  },
+  "defaultProject": "gestor-sinistro-app",
+  "cli": {
+    "analytics": "ff462721-efb7-4ddb-9f63-2e8741ebebea"
+  }
 }

@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppMenuComponent } from './app-menu/app-menu.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormOcorrenciaComponent } from './form-ocorrencia/form-ocorrencia.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppMenuComponent,
+    FormOcorrenciaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
