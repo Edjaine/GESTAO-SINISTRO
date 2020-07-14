@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppMenuComponent } from './app-menu/app-menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormOcorrenciaComponent } from './form-ocorrencia/form-ocorrencia.component';
+import { HomeModule} from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormOcorrenciaComponent } from './form-ocorrencia/form-ocorrencia.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     NgbModule
   ],
   providers: [],

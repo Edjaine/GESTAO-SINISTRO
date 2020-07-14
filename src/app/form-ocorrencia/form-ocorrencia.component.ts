@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-ocorrencia.component.scss']
 })
 export class FormOcorrenciaComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
-
 }

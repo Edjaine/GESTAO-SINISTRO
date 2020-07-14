@@ -1,0 +1,29 @@
+<body class="text-center">
+  <form class="form-signin" [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin.value)">
+    <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input autocomplete="off" formControlName="userName" type="email" id="inputEmail" class="form-control" placeholder="Email address" value=""
+      autofocus>
+    <small *ngIf="formLogin.get('userName').errors?.required" class="text-danger d-block mt-2">
+      E-mail é obrigatório
+    </small>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input autocomplete="off" formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" value="">
+    <small *ngIf="formLogin.get('password').errors?.required" class="text-danger d-block mt-2">
+      E-mail é obrigatório
+    </small>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button [disabled]="formLogin.invalid" class="btn btn-lg btn-primary btn-block" type="submit">
+      Sign in
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+  </form>
+</body>
