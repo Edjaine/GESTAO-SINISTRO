@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
     templateUrl: './singin.component.html',
@@ -9,17 +10,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class SingComponent implements OnInit {
     formLogin: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+        private authService: AuthService) {
 
     }
     ngOnInit(): void {
         this.formLogin = this.formBuilder.group({
-            userName: ['', Validators.required, Validators.email],
-            password: ['', Validators.required]
+            userName: ['', [Validators.required]],
+            password: ['', [Validators.required]]
         });
     }
 
-    onSubmit(e) {
-        console.log(e);
+    onSubmit(e: any): void {
+        this.authService.autentica(e.userName, e.password);
     }
 }
