@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/core/auth.service';
 
 export class SingComponent implements OnInit {
     formLogin: FormGroup;
+    insucessoLogin = false;
 
     constructor(private formBuilder: FormBuilder,
         private authService: AuthService) {
@@ -22,6 +23,15 @@ export class SingComponent implements OnInit {
     }
 
     onSubmit(e: any): void {
-        this.authService.autentica(e.userName, e.password);
+        this.authService.autentica(e.userName, e.password)
+            .subscribe(
+                res => {
+                    console.log('Usuário logado');
+                },
+                error => {
+                    console.log('Ocorreu um erro no login');
+                    this.formLogin.reset();
+                }
+            );
     }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { TokenService } from './token.service';
 
 const API_URL = 'http://localhost/';
 
@@ -9,13 +11,15 @@ const API_URL = 'http://localhost/';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private tokenService: TokenService) { }
 
-  autentica(usuario: string, senha: string) {
-    return this.http.post(`${API_URL}Login/Logar?usuario=${usuario}&senha=${senha}`, {})
-      .subscribe(
-        res => console.log(`Sucesso >>> ${res}`),
-        error => console.log(`Ocorreu um erro na requisição >>>> ${error}`)
-      );
+  autentica(usuario: string, senha: string): Observable<any> {
+    return this.http.get(`${API_URL}Login/Logar?usuario=${usuario}&senha=${senha}`, { observe: 'response' })
+      .pipe(tap(res => {
+        const TOKEN = res.body.token;
+        this.tokenService.setToken(TOKEN);
+      }
+      ));
   }
 }
